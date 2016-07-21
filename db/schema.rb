@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160721011528) do
+ActiveRecord::Schema.define(version: 20160721195501) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "title"
@@ -36,8 +36,15 @@ ActiveRecord::Schema.define(version: 20160721011528) do
   create_table "images", force: :cascade do |t|
     t.string   "url"
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
+  end
+
+  create_table "performer_films", force: :cascade do |t|
+    t.integer "performer_id"
+    t.integer "film_id"
   end
 
   create_table "performers", force: :cascade do |t|
@@ -53,8 +60,10 @@ ActiveRecord::Schema.define(version: 20160721011528) do
     t.string   "title"
     t.text     "content"
     t.integer  "author_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "reviewable_id"
+    t.string   "reviewable_type"
   end
 
   add_index "reviews", ["author_id"], name: "index_reviews_on_author_id"
@@ -70,8 +79,10 @@ ActiveRecord::Schema.define(version: 20160721011528) do
   create_table "votes", force: :cascade do |t|
     t.integer  "value"
     t.integer  "voter_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "votable_id"
+    t.string   "votable_type"
   end
 
   add_index "votes", ["voter_id"], name: "index_votes_on_voter_id"
