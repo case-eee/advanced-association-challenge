@@ -46,3 +46,6 @@ An user has many images.
 A film has many images.
 
 An image either belongs to a film, a performer, or a user (not both).
+
+### Submitting your work
+Fork this challenge. Fulfill the requirements. Upload a picture of your database schema to the root of your application or the bottom of the README. Feel free to take a picture of a whiteboard or use an online schema designer. Create a pull request back to this repository with all your work.
