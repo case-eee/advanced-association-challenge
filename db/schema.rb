@@ -11,13 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160721011528) do
+ActiveRecord::Schema.define(version: 20160721174212) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "film_performers", force: :cascade do |t|
+    t.integer "film_id"
+    t.integer "performer_id"
+  end
+
+  create_table "film_reviews", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "films", force: :cascade do |t|
@@ -36,8 +46,9 @@ ActiveRecord::Schema.define(version: 20160721011528) do
   create_table "images", force: :cascade do |t|
     t.string   "url"
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "performer_id"
   end
 
   create_table "performers", force: :cascade do |t|
@@ -53,8 +64,12 @@ ActiveRecord::Schema.define(version: 20160721011528) do
     t.string   "title"
     t.text     "content"
     t.integer  "author_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "user_id"
+    t.integer  "film_id"
+    t.integer  "reviewable_id"
+    t.string   "reviewable_type"
   end
 
   add_index "reviews", ["author_id"], name: "index_reviews_on_author_id"
