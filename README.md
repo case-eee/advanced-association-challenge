@@ -1,7 +1,7 @@
 ## Advanced Association Challenge
 
 ### Setup
-You are provided with migrations and models for some resources. You will need to create join tables and their corresponding models if necessary (it will be necessary to satisfy all the requirements). If you need to use polymorphic associations, you will need to add fields to those tables as well. Do **not** modify any field already in an existing table, you may only add fields to them. 
+You are provided with migrations and models for some resources. You will need to create join tables and their corresponding models if necessary (it will be necessary to satisfy all the requirements). If you need to use polymorphic associations, you will need to add fields to those tables as well. Do **not** modify any field already in an existing table, you may only add fields to them.
 
 ### Overview
 
@@ -17,7 +17,7 @@ A film can belong to just one category.
 
 A film has many performers.
 
-A performer has many starred in films. 
+A performer has many starred in films.
 
 A performer has many images.
 
@@ -49,3 +49,5 @@ An image either belongs to a film, a performer, or a user (not both).
 
 ### Submitting your work
 Fork this challenge. Fulfill the requirements. Upload a picture of your database schema to the root of your application or the bottom of the README. Feel free to take a picture of a whiteboard or use an online schema designer. Create a pull request back to this repository with all your work.
+
+![Schema Design](app/assets/images/schema.png)

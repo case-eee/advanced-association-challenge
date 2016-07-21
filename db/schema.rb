@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160721011528) do
+ActiveRecord::Schema.define(version: 20160721174644) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "title"
@@ -36,8 +36,10 @@ ActiveRecord::Schema.define(version: 20160721011528) do
   create_table "images", force: :cascade do |t|
     t.string   "url"
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "imagable_id"
+    t.string   "imagable_type"
   end
 
   create_table "performers", force: :cascade do |t|
@@ -53,11 +55,21 @@ ActiveRecord::Schema.define(version: 20160721011528) do
     t.string   "title"
     t.text     "content"
     t.integer  "author_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "reviewable_id"
+    t.string   "reviewable_type"
   end
 
   add_index "reviews", ["author_id"], name: "index_reviews_on_author_id"
+
+  create_table "starred_ins", force: :cascade do |t|
+    t.integer "film_id"
+    t.integer "performer_id"
+  end
+
+  add_index "starred_ins", ["film_id"], name: "index_starred_ins_on_film_id"
+  add_index "starred_ins", ["performer_id"], name: "index_starred_ins_on_performer_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
@@ -70,8 +82,10 @@ ActiveRecord::Schema.define(version: 20160721011528) do
   create_table "votes", force: :cascade do |t|
     t.integer  "value"
     t.integer  "voter_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "votable_id"
+    t.string   "votable_type"
   end
 
   add_index "votes", ["voter_id"], name: "index_votes_on_voter_id"
